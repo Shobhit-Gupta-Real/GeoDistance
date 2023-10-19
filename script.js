@@ -37,6 +37,33 @@ function setB(){
     updateInfo();
 }
 
+function euclidean(xyz1, xyz2){
+    return Math.sqrt((xyz1.x-xyz2.x)*(xyz1.x-xyz2.x)+
+    (xyz1.y-xyz2.y)*(xyz1.y-xyz2.y)+
+    (xyz1.z-xyz2.z)*(xyz1.z-xyz2.z));
+};
+
+function degtorad(angle){
+    return angle*Math.PI/180;
+}
+
+function latlontoxyz(latlon, R){
+    const xyz = {x:0, y:0, z:0}
+    xyz.y = Math.sin(degtorad(latlon.latitude))*R;
+    const r = Math.cos(degtorad(latlon.latitude))*R;
+    xyz.x=Math.sin(degtorad(latlon.longitude))*r;
+    xyz.z=Math.cos(degtorad(latlon.longitude))*r;
+    return xyz; 
+}
+
+function getDistance(A, B){
+    const R = 6371000;
+    const xyz1 = latlontoxyz(A, R);
+    const xyz2 = latlontoxyz(B, R);
+    const eucldist = euclidean(xyz1, xyz2);
+    return eucldist;
+}
+
 function updateInfo(){
     if(A!=null){
         document.getElementById("aBtn").innerHTML=A.latitude+"<br>"+A.longitude;
@@ -51,29 +78,7 @@ function updateInfo(){
     }
 }
 
-function latlontoxyz(latlon, R){
-    const xyz = {x:0, y:0, z:0}
-    xyz.y = Math.sin(degtorad(latlon.latitude))*R;
-    const r = Math.cos(degtorad(latlon.latitude))*R;
-    xyz.x=Math.sin(degtorad(latlon.longitude))*r;
-    xyz.z=Math.cos(degtorad(latlon.longitude))*r;
-    return xyz; 
-}
 
-function degtorad(angle){
-    return angle*Math.PI/180;
-}
 
-function euclidean(xyz1, xyz2){
-    return Math.sqrt((xyz1.x-xyz2.x)*(xyz1.x-xyz2.x)+
-    (xyz1.y-xyz2.y)*(xyz1.y-xyz2.y)+
-    (xyz1.x-xyz2.z)*(xyz1.x-xyz2.z));
-};
 
-function getDistance(A, B){
-    const R = 6371000;
-    const xyz1 = latlontoxyz(A, R);
-    const xyz2 = latlontoxyz(B, R);
-    const eucldist = euclidean(xyz1, xyz2);
-    return eucldist;
-}
+
