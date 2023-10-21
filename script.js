@@ -2,20 +2,20 @@ let CURRENT_LOCATION = null;
 let A=null;
 let B=null;
 
-function main(){
-    let geolocation=null;
-    if(window.navigator && window.navigator.geolocation){
-        geolocation = window.navigator.geolocation;
-    }
-    if(geolocation){
-        geolocation.watchPosition(onLocationUpdate, onError,{
-            enableHighAccuracy: true,
-            maximumAge: 1000
-        })
-    }else{
-        alert('Cannot access the location')
-    }
-}
+// function main(){
+//     let geolocation=null;
+//     if(window.navigator && window.navigator.geolocation){
+//         geolocation = window.navigator.geolocation;
+//     }
+//     if(geolocation){
+//         geolocation.watchPosition(onLocationUpdate, onError,{
+//             enableHighAccuracy: true,
+//             maximumAge: 1000
+//         })
+//     }else{
+//         alert('Cannot access the location')
+//     }
+// }
 
 function onLocationUpdate(event){
     CURRENT_LOCATION = event.coords;
