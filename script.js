@@ -80,6 +80,7 @@ function calci(){
         const style = info.style;
         style.color = "green";
     }
+    
 }
 
 function reset(){

@@ -115,7 +115,7 @@ body{
 }
 .pricing-price-head{
     color: hsl(357, 100%, 68%);
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 800;
     display: inline-flex;
 }
