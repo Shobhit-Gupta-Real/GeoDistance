@@ -1,24 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoDistance</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <title>Document</title>
-</head> 
+
+</head>
+
 <body onload="main()">
-    <div class="container">
-    <h1>Distance</h1>
-    <div id="loc"></div>
-    <div class="buttons">
-    <button id="aBtn" onclick="setA()">A</button>
-    <button id="bBtn" onclick="setB()">B</button>
+    <div class="panel pricing-table">
+        <div class="pricing-plan">
+            <img src="https://www.buyrentkenya.com/discover/wp-content/uploads/2022/06/brk-blog-4reasons-why.png" alt="" class="pricing-img">
+            <h2 class="pricing-header">Start</h2>
+            <ul class="pricing-features">
+                <li class="pricing-features-item">Co-Ordinates A</li>
+                <li class="pricing-features-item" id="coordia">NA</li>
+            </ul>
+            <span class="pricing-price">POINT A</span>
+            <button class="pricing-button" id="aBtn" onclick="setA()">PIN📌</button>
+        </div>
+
+        <div class="pricing-plan">
+            <img src="https://www.lystloc.com/blog/wp-content/uploads/2018/11/Route-map-feature.jpg" alt="" class="pricing-img">
+            
+            <ul class="pricing-features">
+                <li class="pricing-features-item" style="color: red;">Current Location</li>
+                <div class="pricing-features-item-location" id="loc"></div>
+            </ul>
+            <div class="pricing-price" id="info">Distance</div>
+            <div class="inbutton">
+            <button class="pricing-button is-featured" onclick="calci()">Calculate</button>
+            <button class="pricing-button" onclick="reset()">Reset</button>
+            </div>
+        </div>
+
+        <div class="pricing-plan">
+            <img src="https://www.lifewire.com/thmb/YBQuRMKxxhx3Zb3uJ1x-QOT6VsM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Maplocation_-5a492a4e482c52003601ea25.jpg" alt="" class="pricing-img">
+            <h2 class="pricing-header">End</h2>
+            <ul class="pricing-features">
+                <li class="pricing-features-item">Co-ordinates B</li>
+                <li class="pricing-features-item" id="coordib">NA</li>
+            </ul>
+            <span class="pricing-price">POINT B</span>
+            <button class="pricing-button" id="bBtn" onclick="setB()">PIN📌</button>
+        </div>
+
     </div>
-    <div id="info"></div>
-    <div id="instructions">
-        Press A and B to update them with the current location
-    </div>
-</div>
+
 </body>
+
 </html>

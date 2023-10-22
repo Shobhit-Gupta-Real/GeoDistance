@@ -2,25 +2,25 @@ let CURRENT_LOCATION = null;
 let A=null;
 let B=null;
 
-// function main(){
-//     let geolocation=null;
-//     if(window.navigator && window.navigator.geolocation){
-//         geolocation = window.navigator.geolocation;
-//     }
-//     if(geolocation){
-//         geolocation.watchPosition(onLocationUpdate, onError,{
-//             enableHighAccuracy: true,
-//             maximumAge: 1000
-//         })
-//     }else{
-//         alert('Cannot access the location')
-//     }
-// }
+function main(){
+    let geolocation=null;
+    if(window.navigator && window.navigator.geolocation){
+        geolocation = window.navigator.geolocation;
+    }
+    if(geolocation){
+        geolocation.watchPosition(onLocationUpdate, onError,{
+            enableHighAccuracy: true,
+            maximumAge: 1000
+        })
+    }else{
+        alert('Cannot access the location')
+    }
+}
 
 function onLocationUpdate(event){
     CURRENT_LOCATION = event.coords;
     document.getElementById("loc").innerHTML=
-    "Your Location:<br>Lat: "+CURRENT_LOCATION.latitude+
+    "Lat: "+CURRENT_LOCATION.latitude+
     "<br>Lon: "+CURRENT_LOCATION.longitude;
 }
 function onError(err){
@@ -38,9 +38,9 @@ function setB(){
 }
 
 function euclidean(xyz1, xyz2){
-    return Math.sqrt((xyz1.x-xyz2.x)*(xyz1.x-xyz2.x)+
+    return Math.round(Math.sqrt((xyz1.x-xyz2.x)*(xyz1.x-xyz2.x)+
     (xyz1.y-xyz2.y)*(xyz1.y-xyz2.y)+
-    (xyz1.z-xyz2.z)*(xyz1.z-xyz2.z));
+    (xyz1.z-xyz2.z)*(xyz1.z-xyz2.z)));
 };
 
 function degtorad(angle){
@@ -66,19 +66,22 @@ function getDistance(A, B){
 
 function updateInfo(){
     if(A!=null){
-        document.getElementById("aBtn").innerHTML=A.latitude+"<br>"+A.longitude;
+        document.getElementById("coordia").innerHTML="Lat: "+A.latitude+"<br> Lon: "+A.longitude;
     }
     if(B!=null){
-        document.getElementById("bBtn").innerHTML=B.latitude+"<br>"+B.longitude;
+        document.getElementById("coordib").innerHTML="Lat: "+B.latitude+"<br> Lon: "+B.longitude;
     }
+}
+function calci(){
     if(A!=null && B!=null){
         let dist = getDistance(A,B);
-        document.getElementById("info").innerHTML=
-        "Distance: "+dist+" meters";
+        const info = document.getElementById("info");
+        info.innerHTML = dist+ " (meters)";
+        const style = info.style;
+        style.color = "green";
     }
 }
 
-
-
-
-
+function reset(){
+    location.reload();
+}
